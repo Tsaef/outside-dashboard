@@ -110,16 +110,19 @@
               >Mot de passe oublié ?</a
             >
           </div>
-
           <!-- Submit button -->
-          <button
-            type="submit"
-            class="inline-block rounded-full px-7 py-3 bg-[#78b242] text-white font-semibold text-2xl leading-snug shadow-md hover:bg-[#608e34] hover:shadow-lg active:bg-[#4c7129] active:shadow-lg transition duration-150 ease-in-out w-full"
-          >
-            Se connecter
-          </button>
+          <router-link to="/">
+            <button
+              type="submit"
+              class="inline-block rounded-full px-7 py-3 bg-[#78b242] text-white font-semibold text-2xl leading-snug shadow-md hover:bg-[#608e34] hover:shadow-lg active:bg-[#4c7129] active:shadow-lg transition duration-150 ease-in-out w-full"
+            >
+              Se connecter
+            </button>
+          </router-link>
         </div>
-        <p class="bottom text-center font-semibold text-base text-[#5B5B5B] -mb-3">
+        <p
+          class="bottom text-center font-semibold text-base text-[#5B5B5B] -mb-3"
+        >
           Pour créer un compte, rendez-vous sur l'application mobile.
         </p>
       </div>
