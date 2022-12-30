@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row">
-    <div class="bg-[#363741] h-screen w-1/6">
-      <div class="p-5 flex mx-auto items-center place-content-around mb-5">
+    <div class="bg-[#363741] h-screen w-1/6 min-w-fit">
+      <div class="p-5 flex mx-auto items-center place-content-around">
         <img src="../assets/Logo.png" class="w-20" />
         <p class="text-[#DDE2FF] text-xl font-semibold">Dashboard</p>
       </div>
@@ -60,34 +60,6 @@
           </p>
         </div>
       </router-link>
-      <router-link to="/settings">
-        <div
-          onclick=""
-          class="py-5 flex items-center cursor-pointer"
-          :class="{
-            'border-l-4 border-l-[#DDE2FF] bg-[#3f404a]':
-              this.selectedTab === 'settings',
-            'hover:bg-[#3f404a]': this.selectedTab !== 'settings',
-          }"
-        >
-          <font-awesome-icon
-            icon="fa-solid fa-gear"
-            :class="{
-              'mx-8 text-[#DDE2FF]': this.selectedTab === 'settings',
-              'mx-8 text-[#A4A6B3]': this.selectedTab !== 'settings',
-            }"
-          />
-          <p
-            class="text-lg font-semibold"
-            :class="{
-              'text-[#DDE2FF] ': this.selectedTab === 'settings',
-              'text-[#A4A6B3]': this.selectedTab !== 'settings',
-            }"
-          >
-            Paramètres
-          </p>
-        </div>
-      </router-link>
       <router-link to="/subscribe">
         <div
           onclick=""
@@ -116,21 +88,51 @@
           </p>
         </div>
       </router-link>
+      <div class="my-3 h-0 w-full border-t border-[#40414b]"></div>
+      <router-link to="/settings">
+        <div
+          onclick=""
+          class="py-5 flex items-center cursor-pointer"
+          :class="{
+            'border-l-4 border-l-[#DDE2FF] bg-[#3f404a]':
+              this.selectedTab === 'settings',
+            'hover:bg-[#3f404a]': this.selectedTab !== 'settings',
+          }"
+        >
+          <font-awesome-icon
+            icon="fa-solid fa-gear"
+            :class="{
+              'mx-8 text-[#DDE2FF]': this.selectedTab === 'settings',
+              'mx-8 text-[#A4A6B3]': this.selectedTab !== 'settings',
+            }"
+          />
+          <p
+            class="text-lg font-semibold"
+            :class="{
+              'text-[#DDE2FF] ': this.selectedTab === 'settings',
+              'text-[#A4A6B3]': this.selectedTab !== 'settings',
+            }"
+          >
+            Paramètres
+          </p>
+        </div>
+      </router-link>
     </div>
     <div class="w-5/6">
+      <Header></Header>
       <router-view />
     </div>
-    <!-- <font-awesome-icon icon="fa-solid fa-route" />
-    <font-awesome-icon icon="fa-solid fa-medal" />
-    <font-awesome-icon icon="fa-solid fa-gear" />  -->
   </div>
 </template>
 
 <script>
 import { useRoute } from "vue-router";
 import { computed } from "vue";
+import Header from "@/components/Header.vue";
 export default {
   name: "sidebar",
+  // eslint-disable-next-line vue/no-reserved-component-names
+  components: { Header },
   data() {
     return {
       selectedTab: "dashboard",
@@ -159,19 +161,17 @@ export default {
   setup() {
     const route = useRoute();
     const path = computed(() => route.path);
-    console.log(path.value);
     return { path };
   },
   watch: {
-    '$route.params.search': {
-      handler: function(search) {
+    "$route.params.search": {
+      handler: function () {
         this.checkPath();
-        console.log(search)
       },
       deep: true,
-      immediate: true
-    }
-  }
+      immediate: true,
+    },
+  },
 };
 </script>
 
