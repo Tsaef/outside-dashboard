@@ -1,6 +1,12 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+
+//Tailwind css
 import "./main.css";
+
+//v-calendar
+import '../node_modules/v-calendar/dist/style.css';
+import VCalendar from 'v-calendar';
 
 //router
 import { router } from "./router";
@@ -17,5 +23,6 @@ library.add(faChartPie, faGear, faMedal, faRoute);
 const app = createApp(App);
 
 app.use(router);
+app.use(VCalendar, {});
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.mount("#app");
