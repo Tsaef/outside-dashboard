@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8 items-center place-content-between flex border-b">
+  <div class="p-8 items-center place-content-between flex border-b shadow-sm">
     <h1 class="text-2xl font-semibold">{{ this.selectedTab }}</h1>
     <div class="items-center flex cursor-pointer">
       <div class="w-0 h-6 mx-10 border-l border-[#C5C7CD]"></div>
@@ -26,7 +26,7 @@
         Username
         <img
           class="m-1 ml-2 w-8 h-8 rounded-full object-cover"
-          src="../assets/Logo.png"
+          src="@/assets/Logo.png"
           alt="user photo"
         />
       </button>
@@ -56,8 +56,7 @@
 import { useRoute } from "vue-router";
 import { computed } from "vue";
 export default {
-  // eslint-disable-next-line vue/no-reserved-component-names
-  name: "header",
+  name: "headerBar",
   data() {
     return {
       selectedTab: "Vue générale",

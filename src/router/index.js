@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Login from "@/views/Login";
+import Homepage from "@/views/Homepage";
 import Dashboard from "@/views/Dashboard";
-import Sidebar from "@/components/Sidebar";
 import Temp from "@/views/Temp";
 
 const routes = [
@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: "/",
-    component: Sidebar,
+    component: Homepage,
     children: [
       {
         path: '/',

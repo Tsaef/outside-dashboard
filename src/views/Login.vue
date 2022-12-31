@@ -5,7 +5,7 @@
       style="background-image: url(https://i.imgur.com/u54GoQN.jpg)"
     >
       <div class="absolute inset-0 flex justify-center items-center z-10">
-        <img src="../assets/TexteBlanc.png" class="w-1/2 drop-shadow-md" />
+        <img src="@/assets/TexteBlanc.png" class="w-1/2 drop-shadow-md" />
       </div>
     </div>
 
@@ -13,7 +13,7 @@
 
     <div style="background-color: white" class="p-10 w-full">
       <div style="background-color: white">
-        <img src="../assets/Logo.png" class="w-40 mx-auto mb-10" />
+        <img src="@/assets/Logo.png" class="w-40 mx-auto mb-10" />
         <h1 class="font-semibold text-[#1C1C1C] leading-tight text-4xl mb-3">
           Se connecter
         </h1>
@@ -132,7 +132,6 @@
 
 <script>
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
   name: "login",
   data() {
     return {
