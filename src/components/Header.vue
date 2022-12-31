@@ -40,8 +40,16 @@
           <div class="font-medium">Pro User</div>
           <div class="truncate">name@flowbite.com</div>
         </div>
-        <div class="py-1" :onclick="disconnectUser">
+        <div class="py-1">
+          <router-link to="/cgu">
+            <p
+            class="block py-2 px-4 text-sm font-medium text-gray-900 hover:bg-gray-100"
+            >
+            CGU
+          </p>
+        </router-link>
           <p
+            :onclick="disconnectUser"
             class="block py-2 px-4 text-sm font-semibold text-gray-900 hover:bg-gray-100"
           >
             Sign out
@@ -82,10 +90,10 @@ export default {
       }
     },
     disconnectUser() {
-        alert('deco');
-        this.$router.push({ name: 'Login' });
-        return;
-    }
+      alert("deco");
+      this.$router.push({ name: "Login" });
+      return;
+    },
   },
   setup() {
     const route = useRoute();
