@@ -90,7 +90,7 @@ export default {
       }
     },
     disconnectUser() {
-      alert("deco");
+      this.$cookies.remove("token");
       this.$router.push({ name: "Login" });
       return;
     },

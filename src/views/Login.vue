@@ -5,15 +5,15 @@
       style="background-image: url(https://i.imgur.com/u54GoQN.jpg)"
     >
       <div class="absolute inset-0 flex justify-center items-center z-10">
-        <img src="@/assets/TexteBlanc.png" class="w-1/2 drop-shadow-md" />
+        <img src="../assets/TexteBlanc.png" class="w-1/2 drop-shadow-md" />
       </div>
     </div>
 
     <!-- Left and Right Panels -->
 
-    <div style="background-color: white" class="p-10 w-full">
+    <div style="background-color: white" class="pr-10 pl-10 pt-10 w-full">
       <div style="background-color: white">
-        <img src="@/assets/Logo.png" class="w-40 mx-auto mb-10" />
+        <img src="../assets/Logo.png" class="w-40 mx-auto mb-10" />
         <h1 class="font-semibold text-[#1C1C1C] leading-tight text-4xl mb-3">
           Se connecter
         </h1>
@@ -61,7 +61,7 @@
             Ou connectez-vous avec votre email
           </p>
         </div>
-        <div class="p-20 -mt-10">
+        <div class="pr-20 pt-20 pl-20 -mt-10">
           <p
             class="font-semibold text-[#5B5B5B] leading-tight text-2xl mb-1 ml-1"
           >
@@ -72,6 +72,7 @@
               type="text"
               class="py-4 form-control w-full px-4 text-xl font-normal text-gray-700 bg-white bg-clip-padding border-[2px] border-solid border-gray-300 rounded-[12px] transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
               id="emailInput"
+              v-model="email"
               placeholder="adresse@mail.com"
             />
           </div>
@@ -85,6 +86,7 @@
               type="password"
               class="py-4 form-control w-full px-4 text-xl font-normal text-gray-700 bg-white bg-clip-padding border-[2px] border-solid border-gray-300 rounded-[12px] transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
               id="passwordInput"
+              v-model="password"
               placeholder="••••••••"
             />
           </div>
@@ -110,34 +112,54 @@
               >Mot de passe oublié ?</a
             >
           </div>
+
           <!-- Submit button -->
-          <router-link to="/">
-            <button
-              type="submit"
-              class="inline-block rounded-full px-7 py-3 bg-[#78b242] text-white font-semibold text-2xl leading-snug shadow-md hover:bg-[#608e34] hover:shadow-lg active:bg-[#4c7129] active:shadow-lg transition duration-150 ease-in-out w-full"
+          <button
+            type="submit"
+            class="inline-block rounded-full px-7 py-3 bg-[#78b242] text-white font-semibold text-2xl leading-snug shadow-md hover:bg-[#608e34] hover:shadow-lg active:bg-[#4c7129] active:shadow-lg transition duration-150 ease-in-out w-full"
+            v-on:click="loginUser"
             >
-              Se connecter
-            </button>
-          </router-link>
+            Se connecter
+          </button>
+          <p class="bottom text-center font-semibold text-base text-[#5B5B5B] mt-5">
+            Pour créer un compte, rendez-vous sur l'application mobile.
+          </p>
         </div>
-        <p
-          class="bottom text-center font-semibold text-base text-[#5B5B5B] -mb-3"
-        >
-          Pour créer un compte, rendez-vous sur l'application mobile.
-        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
+import axios from 'axios'
+import Vue from 'vue'
+import VueCookies from 'vue-cookies'
+
+Vue.use(VueCookies, {expires: '1d'})
+
 export default {
+  // eslint-disable-next-line vue/multi-word-component-names
   name: "login",
   data() {
     return {
       imageUrl: "./assets/Illu-A4.jpg",
+      email: '',
+      password: '',
     };
   },
+  methods: {
+    async loginUser() {
+      const response = await axios.post("https://qa.outside-project.cf/auth/login/native", {
+        email: this.email,
+        password: this.password
+      }).then((response) => {
+        this.$cookies.set("token", response.data, '1d')
+        this.$router.push({ name: "Dashboard" });
+      })
+      console.log(response);
+    }
+  }
 };
 
 //style="background-color: blue;"
