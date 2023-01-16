@@ -29,7 +29,6 @@ export default {
             new Date(2022, 11, 20),
           ],
         fillMode: 'light',
-
       },
       {
         description: "3 quêtes terminées",

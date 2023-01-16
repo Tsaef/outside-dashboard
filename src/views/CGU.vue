@@ -32,9 +32,6 @@
       </p>
     </div>
   </div>
-  <!-- <div class="flex items-center justify-center">
-      <h1 class="text-[#C4C4C4] text-5xl font-semibold mt-80 mb-4">Work in progress...</h1>
-    </div> -->
 </template>
 
 <script>

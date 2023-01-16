@@ -9,7 +9,6 @@
     <Graph></Graph>
     <CalendarCard></CalendarCard>
   </div>
-  <!-- https://vcalendar.io/attributes.html#popovers -->
 </template>
 
 <script>
